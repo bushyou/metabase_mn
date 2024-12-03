@@ -28,8 +28,6 @@ export const SearchButton = () => {
       />
     );
   } else {
-    return (
-
-    );
+    return;
   }
 };

@@ -56,81 +56,81 @@ const NewItemMenu = ({
   const menuItems = useMemo(() => {
     const items: NewMenuItem[] = [];
 
-    if (hasDataAccess) {
-      items.push({
-        title: t`Question`,
-        icon: "insight",
-        link: Urls.newQuestion({
-          mode: "notebook",
-          creationType: "custom_question",
-          collectionId,
-          cardType: "question",
-        }),
-        onClose: onCloseNavbar,
-      });
-    }
+//     if (hasDataAccess) {
+//       items.push({
+//         title: t`Question`,
+//         icon: "insight",
+//         link: Urls.newQuestion({
+//           mode: "notebook",
+//           creationType: "custom_question",
+//           collectionId,
+//           cardType: "question",
+//         }),
+//         onClose: onCloseNavbar,
+//       });
+//     }
 
-    if (hasNativeWrite) {
-      items.push({
-        title: hasDatabaseWithJsonEngine ? t`Native query` : t`SQL query`,
-        icon: "sql",
-        link: Urls.newQuestion({
-          type: "native",
-          creationType: "native_question",
-          collectionId,
-          cardType: "question",
-          databaseId: lastUsedDatabaseId || undefined,
-        }),
-        onClose: onCloseNavbar,
-      });
-    }
+//     if (hasNativeWrite) {
+//       items.push({
+//         title: hasDatabaseWithJsonEngine ? t`Native query` : t`SQL query`,
+//         icon: "sql",
+//         link: Urls.newQuestion({
+//           type: "native",
+//           creationType: "native_question",
+//           collectionId,
+//           cardType: "question",
+//           databaseId: lastUsedDatabaseId || undefined,
+//         }),
+//         onClose: onCloseNavbar,
+//       });
+//     }
 
-    items.push(
-      {
-        title: t`Dashboard`,
-        icon: "dashboard",
-        action: () => dispatch(setOpenModal("dashboard")),
-      },
-      {
-        title: t`Collection`,
-        icon: "folder",
-        action: () => dispatch(setOpenModal("collection")),
-      },
-    );
+//     items.push(
+//       {
+//         title: t`Dashboard`,
+//         icon: "dashboard",
+//         action: () => dispatch(setOpenModal("dashboard")),
+//       },
+//       {
+//         title: t`Collection`,
+//         icon: "folder",
+//         action: () => dispatch(setOpenModal("collection")),
+//       },
+//     );
 
-    if (hasNativeWrite) {
-      const collectionQuery = collectionId
-        ? `?collectionId=${collectionId}`
-        : "";
+//     if (hasNativeWrite) {
+//       const collectionQuery = collectionId
+//         ? `?collectionId=${collectionId}`
+//         : "";
+//
+//       items.push({
+//         title: t`Model`,
+//         icon: "model",
+//         link: `/model/new${collectionQuery}`,
+//         onClose: onCloseNavbar,
+//       });
+//     }
 
-      items.push({
-        title: t`Model`,
-        icon: "model",
-        link: `/model/new${collectionQuery}`,
-        onClose: onCloseNavbar,
-      });
-    }
+//     if (hasModels && hasDatabaseWithActionsEnabled && hasNativeWrite) {
+//       items.push({
+//         title: t`Action`,
+//         icon: "bolt",
+//         action: () => dispatch(setOpenModal("action")),
+//       });
+//     }
 
-    if (hasModels && hasDatabaseWithActionsEnabled && hasNativeWrite) {
-      items.push({
-        title: t`Action`,
-        icon: "bolt",
-        action: () => dispatch(setOpenModal("action")),
-      });
-    }
-
-    if (hasDataAccess) {
-      items.push({
-        title: t`Metric`,
-        icon: "metric",
-        link: Urls.newQuestion({
-          mode: "query",
-          cardType: "metric",
-          collectionId,
-        }),
-        onClose: onCloseNavbar,
-      });
-    }
+//     if (hasDataAccess) {
+//       items.push({
+//         title: t`Metric`,
+//         icon: "metric",
+//         link: Urls.newQuestion({
+//           mode: "query",
+//           cardType: "metric",
+//           collectionId,
+//         }),
+//         onClose: onCloseNavbar,
+//       });
+//     }
 
     return items;
   }, [

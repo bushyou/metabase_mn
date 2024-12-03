@@ -22,30 +22,14 @@ export const SearchButton = () => {
         h="36px"
         leftIcon={<Icon name="search" />}
         variant="subtle"
-        onClick={handleClick}
+//         onClick={handleClick}
         color="text-medium"
         aria-label="Search"
       />
     );
   } else {
     return (
-      <Tooltip label={`${t`Search...`} (${METAKEY}+k)`}>
-        <Button
-          h="36px"
-          w="240px"
-          leftIcon={<Icon name="search" />}
-          onClick={handleClick}
-          // TODO: Adjust this with Mantine V7
-          styles={{
-            inner: {
-              justifyContent: "start",
-            },
-          }}
-          aria-label="Search"
-        >
-          {t`Search`}
-        </Button>
-      </Tooltip>
+
     );
   }
 };

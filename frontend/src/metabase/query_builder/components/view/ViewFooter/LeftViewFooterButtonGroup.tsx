@@ -25,19 +25,7 @@ export const LeftViewFooterButtonGroup = () => {
   return (
     <Group className={CS.flex1}>
       <FooterButtonGroup>
-        <ViewButton
-          medium
-          labelBreakpoint="sm"
-          data-testid="viz-type-button"
-          active={isShowingChartTypeSidebar}
-          onClick={
-            isShowingChartTypeSidebar
-              ? () => dispatch(onCloseChartType())
-              : () => dispatch(onOpenChartType())
-          }
-        >
-          {t`Visualization`}
-        </ViewButton>
+        
         <ViewButton
           active={isShowingChartSettingsSidebar}
           icon="gear"

@@ -183,82 +183,8 @@ export function MainNavbarView({
             >
               {t`Home`}
             </PaddedSidebarLink>
-            {showOnboardingChecklist && (
-              <PaddedSidebarLink
-                icon="learn"
-                url={ONBOARDING_URL}
-                isSelected={nonEntityItem?.url === ONBOARDING_URL}
-                onClick={() => trackOnboardingChecklistOpened()}
-              >
-                {/* eslint-disable-next-line no-literal-metabase-strings -- We only show this to non-whitelabelled instances */}
-                {t`How to use Metabase`}
-              </PaddedSidebarLink>
-            )}
-            {showUploadCSVButton && <DwhUploadCSV />}
+
           </SidebarSection>
-
-          {bookmarks.length > 0 && (
-            <SidebarSection>
-              <ErrorBoundary>
-                <BookmarkList
-                  bookmarks={bookmarks}
-                  selectedItem={cardItem ?? dashboardItem ?? collectionItem}
-                  onSelect={onItemSelect}
-                  reorderBookmarks={reorderBookmarks}
-                  onToggle={setExpandBookmarks}
-                  initialState={expandBookmarks ? "expanded" : "collapsed"}
-                />
-              </ErrorBoundary>
-            </SidebarSection>
-          )}
-
-          <SidebarSection>
-            <ErrorBoundary>
-              <CollectionSectionHeading
-                currentUser={currentUser}
-                handleCreateNewCollection={handleCreateNewCollection}
-              />
-              <Tree
-                data={collectionsWithoutTrash}
-                selectedId={collectionItem?.id}
-                onSelect={onItemSelect}
-                TreeNode={SidebarCollectionLink}
-                role="tree"
-                aria-label="collection-tree"
-              />
-            </ErrorBoundary>
-          </SidebarSection>
-
-          <SidebarSection>
-            <ErrorBoundary>
-              <BrowseNavSection
-                nonEntityItem={nonEntityItem}
-                onItemSelect={onItemSelect}
-                hasDataAccess={hasDataAccess}
-              />
-            </ErrorBoundary>
-          </SidebarSection>
-
-          {trashCollection && (
-            <TrashSidebarSection>
-              <ErrorBoundary>
-                <Tree
-                  data={[trashCollection]}
-                  selectedId={collectionItem?.id}
-                  onSelect={onItemSelect}
-                  TreeNode={SidebarCollectionLink}
-                  role="tree"
-                />
-              </ErrorBoundary>
-            </TrashSidebarSection>
-          )}
-          {showAddDatabaseButton && (
-            <SidebarSection>
-              <ErrorBoundary>
-                <AddDatabase />
-              </ErrorBoundary>
-            </SidebarSection>
-          )}
         </div>
         <WhatsNewNotification />
       </SidebarContentRoot>
@@ -279,8 +205,8 @@ function CollectionSectionHeading({
         <SidebarLink
           icon="add"
           onClick={() => {
-            closePopover();
-            handleCreateNewCollection();
+//             closePopover();
+//             handleCreateNewCollection();
           }}
         >
           {t`New collection`}

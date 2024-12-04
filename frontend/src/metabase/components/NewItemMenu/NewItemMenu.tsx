@@ -70,20 +70,20 @@ const NewItemMenu = ({
 //       });
 //     }
 
-//     if (hasNativeWrite) {
-//       items.push({
-//         title: hasDatabaseWithJsonEngine ? t`Native query` : t`SQL query`,
-//         icon: "sql",
-//         link: Urls.newQuestion({
-//           type: "native",
-//           creationType: "native_question",
-//           collectionId,
-//           cardType: "question",
-//           databaseId: lastUsedDatabaseId || undefined,
-//         }),
-//         onClose: onCloseNavbar,
-//       });
-//     }
+    if (hasNativeWrite) {
+      items.push({
+        title: hasDatabaseWithJsonEngine ? t`Native query` : t`SQL query`,
+        icon: "sql",
+        link: Urls.newQuestion({
+          type: "native",
+          creationType: "native_question",
+          collectionId,
+          cardType: "question",
+          databaseId: lastUsedDatabaseId || undefined,
+        }),
+        onClose: onCloseNavbar,
+      });
+    }
 
 //     items.push(
 //       {

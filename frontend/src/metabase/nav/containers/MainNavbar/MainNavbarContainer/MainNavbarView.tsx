@@ -199,38 +199,6 @@ export function MainNavbarView({
 
 
 
-          <SidebarSection>
-            <ErrorBoundary>
-              <CollectionSectionHeading
-                currentUser={currentUser}
-                handleCreateNewCollection={handleCreateNewCollection}
-              />
-              <Tree
-                data={collectionsWithoutTrash}
-                selectedId={collectionItem?.id}
-                onSelect={onItemSelect}
-                TreeNode={SidebarCollectionLink}
-                role="tree"
-                aria-label="collection-tree"
-              />
-            </ErrorBoundary>
-          </SidebarSection>
-
-
-
-          {trashCollection && (
-            <TrashSidebarSection>
-              <ErrorBoundary>
-                <Tree
-                  data={[trashCollection]}
-                  selectedId={collectionItem?.id}
-                  onSelect={onItemSelect}
-                  TreeNode={SidebarCollectionLink}
-                  role="tree"
-                />
-              </ErrorBoundary>
-            </TrashSidebarSection>
-          )}
 
         </div>
         <WhatsNewNotification />

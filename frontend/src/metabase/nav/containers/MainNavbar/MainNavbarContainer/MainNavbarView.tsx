@@ -183,8 +183,55 @@ export function MainNavbarView({
             >
               {t`Home`}
             </PaddedSidebarLink>
-
+            {showOnboardingChecklist && (
+              <PaddedSidebarLink
+                icon="learn"
+                url={ONBOARDING_URL}
+                isSelected={nonEntityItem?.url === ONBOARDING_URL}
+                onClick={() => trackOnboardingChecklistOpened()}
+              >
+                {/* eslint-disable-next-line no-literal-metabase-strings -- We only show this to non-whitelabelled instances */}
+                {t`How to use Metabase`}
+              </PaddedSidebarLink>
+            )}
+            {showUploadCSVButton && <DwhUploadCSV />}
           </SidebarSection>
+
+
+
+          <SidebarSection>
+            <ErrorBoundary>
+              <CollectionSectionHeading
+                currentUser={currentUser}
+                handleCreateNewCollection={handleCreateNewCollection}
+              />
+              <Tree
+                data={collectionsWithoutTrash}
+                selectedId={collectionItem?.id}
+                onSelect={onItemSelect}
+                TreeNode={SidebarCollectionLink}
+                role="tree"
+                aria-label="collection-tree"
+              />
+            </ErrorBoundary>
+          </SidebarSection>
+
+
+
+          {trashCollection && (
+            <TrashSidebarSection>
+              <ErrorBoundary>
+                <Tree
+                  data={[trashCollection]}
+                  selectedId={collectionItem?.id}
+                  onSelect={onItemSelect}
+                  TreeNode={SidebarCollectionLink}
+                  role="tree"
+                />
+              </ErrorBoundary>
+            </TrashSidebarSection>
+          )}
+
         </div>
         <WhatsNewNotification />
       </SidebarContentRoot>
@@ -205,8 +252,8 @@ function CollectionSectionHeading({
         <SidebarLink
           icon="add"
           onClick={() => {
-//             closePopover();
-//             handleCreateNewCollection();
+            closePopover();
+            handleCreateNewCollection();
           }}
         >
           {t`New collection`}

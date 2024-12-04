@@ -183,18 +183,8 @@ export function MainNavbarView({
             >
               {t`Home`}
             </PaddedSidebarLink>
-            {showOnboardingChecklist && (
-              <PaddedSidebarLink
-                icon="learn"
-                url={ONBOARDING_URL}
-                isSelected={nonEntityItem?.url === ONBOARDING_URL}
-                onClick={() => trackOnboardingChecklistOpened()}
-              >
-                {/* eslint-disable-next-line no-literal-metabase-strings -- We only show this to non-whitelabelled instances */}
-                {t`How to use Metabase`}
-              </PaddedSidebarLink>
-            )}
-            {showUploadCSVButton && <DwhUploadCSV />}
+
+
           </SidebarSection>
 
 
